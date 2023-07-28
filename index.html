@@ -28,7 +28,7 @@
         " id="btn"></i>
   
       </div>
-      <img src="clouds.png"  alt="" id="img">
+      <img src="mist.png"  alt="" id="img" >
       <div class="txt-group">
         <h1 class="temp">13°C</h1>
       <h1 class="city">New York</h1>
@@ -60,8 +60,13 @@
 
     const btn = document.getElementById("btn");
 
+    const icon = document.getElementById("img");
+
     btn.addEventListener("click", ()=>{
       checkWeather(searchBox.value);
+
+      const input = document.querySelector(".input-group input")
+
     })
 
     async function checkWeather(city){
@@ -80,7 +85,21 @@
 
       document.querySelector(".wspeed").innerHTML = data.wind.speed + " Km/hr";
 
-      
+      if(data.weather[0].main == "Clouds"){
+          icon.src = "clouds.png"
+      }
+      else if(data.weather[0].main == "Clear"){
+        icon.src="clear.png"
+      }
+      else if(data.weather[0].main == "Rain"){
+        icon.src="rain.png"
+      }
+      else if(data.weather[0].main == "Drizzle"){
+        icon.src="drizzle.png"
+      }
+      else if(data.weather[0].main == "Mist"){
+        icon.src="mist.png"
+      }
     }
 
     
